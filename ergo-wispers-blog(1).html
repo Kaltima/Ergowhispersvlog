@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ergo-Wispers — Educational Videobooks & Guides for Parents</title>
+<meta name="description" content="Ergo-Wispers: playful, expert-crafted videobooks and parenting guides on early intervention, Montessori, play therapy and child development."/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lora:ital,wght@0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --yellow:#fde68a;--yellow-d:#92400e;--yellow-bg:#fffbeb;
+  --green:#d1fae5;--green-d:#065f46;
+  --purple:#ede9fe;--purple-d:#5b21b6;
+  --pink:#fce7f3;--pink-d:#9d174d;
+  --blue:#e0f2fe;--blue-d:#0c4a6e;
+  --orange:#fef3c7;--orange-d:#78350f;
+  --red:#fee2e2;--red-d:#991b1b;
+  --text:#1f2937;--muted:#6b7280;--border:#f3f4f6;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;color:var(--text);background:#fff;overflow-x:hidden}
+
+/* ---- NAV ---- */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 24px}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:20px;font-weight:900;color:var(--purple-d);letter-spacing:0.04em;text-decoration:none;display:flex;align-items:center;gap:8px}
+.nav-logo span{font-size:22px}
+.nav-links{display:flex;gap:6px;align-items:center}
+.nav-links a{padding:7px 14px;border-radius:20px;font-size:14px;font-weight:700;color:var(--muted);text-decoration:none;transition:all .2s}
+.nav-links a:hover,.nav-links a.active{background:var(--purple);color:var(--purple-d)}
+.nav-cta{padding:8px 20px!important;background:var(--yellow)!important;color:var(--yellow-d)!important;border-radius:20px!important}
+.nav-cta:hover{background:#f59e0b!important;color:#fff!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+.mobile-menu{display:none;flex-direction:column;gap:4px;padding:12px 24px 16px;background:white;border-bottom:1px solid var(--border)}
+.mobile-menu a{padding:10px 16px;border-radius:12px;font-size:15px;font-weight:700;color:var(--muted);text-decoration:none}
+.mobile-menu a:hover{background:var(--purple);color:var(--purple-d)}
+
+/* ---- HERO ---- */
+.hero{background:linear-gradient(135deg,#fffbf0,#fef3c7,#ecfdf5,#ede9fe);padding:80px 24px 60px;text-align:center;position:relative;overflow:hidden}
+.hero-deco{position:absolute;font-size:100px;opacity:0.05;pointer-events:none;animation:spin 25s linear infinite}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--purple);color:var(--purple-d);padding:6px 16px;border-radius:20px;font-size:12px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:20px}
+.hero h1{font-family:'Lora',serif;font-size:clamp(28px,5vw,52px);font-weight:600;line-height:1.2;max-width:700px;margin:0 auto 20px;color:var(--text)}
+.hero h1 em{font-style:italic;color:var(--purple-d)}
+.hero-sub{font-size:clamp(15px,2vw,18px);color:var(--muted);max-width:540px;margin:0 auto 32px;line-height:1.7}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{padding:12px 28px;border-radius:30px;font-size:15px;font-weight:800;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:8px;font-family:'Nunito',sans-serif;cursor:pointer;border:none}
+.btn-primary{background:var(--yellow);color:var(--yellow-d)}
+.btn-primary:hover{background:#f59e0b;color:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,158,11,0.3)}
+.btn-secondary{background:var(--purple);color:var(--purple-d);border:2px solid transparent}
+.btn-secondary:hover{background:var(--purple-d);color:#fff;transform:translateY(-2px)}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.hero-pill{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700}
+.hero-emojis{font-size:48px;margin-bottom:16px;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* ---- SECTION ---- */
+section{padding:64px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:14px}
+.section-title{font-family:'Lora',serif;font-size:clamp(22px,3vw,36px);font-weight:600;margin-bottom:12px;line-height:1.3}
+.section-sub{font-size:15px;color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:40px}
+
+/* ---- CATEGORY CARDS ---- */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.cat-card{border-radius:20px;padding:28px 24px;text-decoration:none;color:inherit;transition:all .25s;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:12px}
+.cat-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.1)}
+.cat-card-emoji{font-size:40px;animation:float 3.5s ease-in-out infinite}
+.cat-card h3{font-size:18px;font-weight:800}
+.cat-card p{font-size:14px;line-height:1.6;opacity:0.75}
+.cat-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:700;background:rgba(255,255,255,0.5);margin-top:auto}
+.cat-coming{opacity:0.85}
+.coming-soon-ribbon{position:absolute;top:14px;right:-22px;background:#fff;color:var(--muted);font-size:10px;font-weight:800;padding:3px 32px;transform:rotate(35deg);letter-spacing:0.08em;text-transform:uppercase;box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+
+/* ---- FEATURED / PRODUCTS ---- */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.product-card{border-radius:20px;overflow:hidden;border:1px solid var(--border);transition:all .25s;background:white}
+.product-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.08)}
+.product-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-size:64px;position:relative}
+.product-body{padding:20px}
+.product-tag{display:inline-block;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:800;margin-bottom:10px;letter-spacing:0.06em;text-transform:uppercase}
+.product-title{font-size:16px;font-weight:800;margin-bottom:8px;line-height:1.3}
+.product-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.product-footer{display:flex;align-items:center;justify-content:space-between}
+.product-price{font-size:18px;font-weight:900;color:var(--purple-d)}
+.product-price span{font-size:12px;font-weight:600;color:var(--muted);margin-left:4px}
+.btn-small{padding:8px 18px;border-radius:20px;font-size:13px;font-weight:800;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px;font-family:'Nunito',sans-serif;border:none;cursor:pointer}
+
+/* ---- BLOG ---- */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.blog-card{border-radius:20px;overflow:hidden;border:1px solid var(--border);transition:all .25s;background:white;cursor:pointer}
+.blog-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.08)}
+.blog-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:56px}
+.blog-body{padding:20px}
+.blog-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.blog-cat{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em}
+.blog-date{font-size:12px;color:var(--muted);font-weight:600}
+.blog-title{font-size:16px;font-weight:800;margin-bottom:8px;line-height:1.4}
+.blog-excerpt{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.blog-read{font-size:13px;font-weight:800;color:var(--purple-d);text-decoration:none;display:flex;align-items:center;gap:4px}
+.blog-read:hover{gap:8px}
+
+/* ---- BLOG POST MODAL ---- */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal{background:white;border-radius:24px;max-width:680px;width:100%;max-height:85vh;overflow-y:auto;position:relative}
+.modal-header{padding:28px 32px 20px;border-bottom:1px solid var(--border);position:sticky;top:0;background:white;z-index:1;border-radius:24px 24px 0 0}
+.modal-close{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--border);background:var(--border);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:'Nunito',sans-serif}
+.modal-close:hover{background:var(--red);color:var(--red-d);border-color:var(--red)}
+.modal-body{padding:24px 32px 32px}
+.modal-body h2{font-family:'Lora',serif;font-size:24px;margin-bottom:16px;line-height:1.4}
+.modal-body p{font-size:15px;line-height:1.8;color:#374151;margin-bottom:16px}
+.modal-body h3{font-size:17px;font-weight:800;margin:24px 0 10px;color:var(--purple-d)}
+.modal-body ul{padding-left:20px;margin-bottom:16px}
+.modal-body ul li{font-size:15px;line-height:1.8;color:#374151;margin-bottom:6px}
+.modal-body .highlight{background:var(--yellow-bg);border-left:4px solid #f59e0b;padding:14px 18px;border-radius:0 12px 12px 0;margin:20px 0;font-size:14px;font-style:italic;color:var(--yellow-d)}
+
+/* ---- ABOUT STRIP ---- */
+.about-strip{background:linear-gradient(135deg,#faf5ff,#ede9fe);border-radius:28px;padding:48px 40px;display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+.about-emoji{font-size:80px;flex-shrink:0;animation:float 4s ease-in-out infinite}
+.about-text{flex:1;min-width:260px}
+.about-text h2{font-family:'Lora',serif;font-size:clamp(20px,3vw,30px);margin-bottom:12px}
+.about-text p{font-size:15px;line-height:1.75;color:#4b5563;margin-bottom:16px}
+.about-chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700}
+
+/* ---- CONTACT ---- */
+.contact-box{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border-radius:28px;padding:48px 40px;text-align:center}
+.contact-box h2{font-family:'Lora',serif;font-size:clamp(20px,3vw,32px);margin-bottom:12px}
+.contact-box p{font-size:15px;color:var(--muted);max-width:480px;margin:0 auto 28px;line-height:1.7}
+.contact-email-link{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:white;border-radius:16px;font-size:16px;font-weight:800;color:var(--green-d);text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.07);transition:all .2s;margin-bottom:20px}
+.contact-email-link:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.12)}
+.contact-socials{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.social-btn{padding:8px 20px;border-radius:20px;font-size:13px;font-weight:800;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.social-btn:hover{transform:translateY(-2px)}
+
+/* ---- NEWSLETTER ---- */
+.newsletter{background:linear-gradient(135deg,#fffbeb,#fef3c7);border-radius:28px;padding:40px;text-align:center;margin-top:48px}
+.newsletter h3{font-family:'Lora',serif;font-size:22px;margin-bottom:8px}
+.newsletter p{font-size:14px;color:var(--muted);margin-bottom:20px}
+.nl-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:440px;margin:0 auto}
+.nl-input{flex:1;min-width:200px;padding:12px 18px;border-radius:20px;border:1.5px solid #e5e7eb;font-family:'Nunito',sans-serif;font-size:14px;outline:none}
+.nl-input:focus{border-color:#f59e0b}
+.nl-btn{padding:12px 22px;background:var(--yellow);color:var(--yellow-d);border-radius:20px;border:none;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:all .2s}
+.nl-btn:hover{background:#f59e0b;color:white}
+.nl-success{display:none;color:var(--green-d);font-weight:800;font-size:14px;margin-top:12px}
+
+/* ---- FOOTER ---- */
+footer{background:#1f2937;color:#9ca3af;padding:40px 24px;text-align:center}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-logo{font-size:20px;font-weight:900;color:white;margin-bottom:8px}
+.footer-tagline{font-size:13px;margin-bottom:24px}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.footer-links a{font-size:13px;color:#9ca3af;text-decoration:none;font-weight:600;transition:color .2s}
+.footer-links a:hover{color:white}
+.footer-copy{font-size:12px;color:#4b5563}
+
+/* ---- UTILS ---- */
+.divider{height:1px;background:var(--border);margin:0}
+.tag-new{background:var(--green);color:var(--green-d);padding:3px 8px;border-radius:8px;font-size:10px;font-weight:800;text-transform:uppercase;margin-left:6px}
+
+@media(max-width:700px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .mobile-menu.open{display:flex}
+  .about-strip{flex-direction:column;text-align:center;padding:32px 24px}
+  .contact-box{padding:32px 20px}
+  .modal-body{padding:20px}
+  .modal-header{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><span>🌱</span> Ergo·Wispers</a>
+    <div class="nav-links">
+      <a href="#home" class="active">Home</a>
+      <a href="#categories">Shop</a>
+      <a href="#blog">Blog</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-cta">✉️ Contact</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" onclick="toggleMenu()">🏠 Home</a>
+    <a href="#categories" onclick="toggleMenu()">🛍️ Shop</a>
+    <a href="#blog" onclick="toggleMenu()">📝 Blog</a>
+    <a href="#about" onclick="toggleMenu()">💛 About</a>
+    <a href="#contact" onclick="toggleMenu()">✉️ Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" style="padding:0">
+  <div class="hero">
+    <div class="hero-deco" style="top:-20px;left:-40px">🌈</div>
+    <div class="hero-deco" style="bottom:-30px;right:-30px;animation-duration:35s">⭐</div>
+    <div class="hero-emojis">🌱📚🎨</div>
+    <div class="hero-badge">🎉 Now live — Educational Videobooks</div>
+    <h1>Where Every Child's Journey<br>Begins with <em>Play & Wonder</em></h1>
+    <p class="hero-sub">Playful, expert-crafted videobooks and parenting guides on early intervention, Montessori, play therapy and child development.</p>
+    <div class="hero-btns">
+      <a href="#categories" class="btn btn-primary">🛍️ Browse the Shop</a>
+      <a href="#blog" class="btn btn-secondary">📝 Read the Blog</a>
+    </div>
+    <div class="hero-pills">
+      <span class="hero-pill" style="background:#fde68a;color:#92400e;">🎠 Videobooks</span>
+      <span class="hero-pill" style="background:#d1fae5;color:#065f46;">📖 Parenting Guides</span>
+      <span class="hero-pill" style="background:#ede9fe;color:#5b21b6;">🎧 Audiobooks</span>
+      <span class="hero-pill" style="background:#fce7f3;color:#9d174d;">🧸 Play Therapy</span>
+      <span class="hero-pill" style="background:#e0f2fe;color:#0c4a6e;">🌿 Montessori</span>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section id="categories">
+  <div class="section-inner">
+    <div class="section-label" style="background:#fde68a;color:#92400e;">🛍️ Our Collections</div>
+    <h2 class="section-title">Everything Your Child Needs to Thrive</h2>
+    <p class="section-sub">Four growing collections of expertly crafted content — each one designed to help parents understand and support their child's unique journey.</p>
+
+    <div class="cat-grid">
+      <div class="cat-card" style="background:linear-gradient(135deg,#fef3c7,#fde68a)" onclick="scrollTo('#featured')">
+        <div class="cat-card-emoji">🎠</div>
+        <h3>Videobooks</h3>
+        <p>Interactive animated guides that bring child development to life — with music, motion and colour.</p>
+        <div class="cat-badge">✅ Available now</div>
+      </div>
+      <div class="cat-card cat-coming" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0)">
+        <div class="coming-soon-ribbon">Coming soon</div>
+        <div class="cat-card-emoji">📖</div>
+        <h3>Parenting Guides</h3>
+        <p>In-depth written guides on Montessori, early intervention, sensory play and more — for every parent.</p>
+        <div class="cat-badge">🛠️ In production</div>
+      </div>
+      <div class="cat-card cat-coming" style="background:linear-gradient(135deg,#ede9fe,#c4b5fd)">
+        <div class="coming-soon-ribbon">Coming soon</div>
+        <div class="cat-card-emoji">🎧</div>
+        <h3>Audiobooks</h3>
+        <p>Listen while you cook, commute or cuddle — expert parenting knowledge in your ears, anytime.</p>
+        <div class="cat-badge">🛠️ In production</div>
+      </div>
+      <div class="cat-card cat-coming" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8)">
+        <div class="coming-soon-ribbon">Coming soon</div>
+        <div class="cat-card-emoji">🧸</div>
+        <h3>Play Therapy Kits</h3>
+        <p>Practical activity guides and printable kits that bring therapeutic play into your home.</p>
+        <div class="cat-badge">🛠️ In production</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FEATURED PRODUCTS -->
+<section id="featured">
+  <div class="section-inner">
+    <div class="section-label" style="background:#ede9fe;color:#5b21b6;">⭐ Featured</div>
+    <h2 class="section-title">Start Here — Our First Release</h2>
+    <p class="section-sub">Our debut videobook is live and ready for parents who want to understand early intervention through the power of play.</p>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-thumb" style="background:linear-gradient(135deg,#fef3c7,#ecfdf5)">🌱</div>
+        <div class="product-body">
+          <div class="product-tag" style="background:#fde68a;color:#92400e;">🎠 Videobook</div>
+          <div class="product-title">Understanding Early Intervention Through Play Therapy</div>
+          <div class="product-desc">An animated, interactive guide covering Montessori methods, play therapy, motor development and how to support your child's unique journey.</div>
+          <div class="product-footer">
+            <div class="product-price">$28.00 <span>one-time</span></div>
+            <span class="btn-small" style="background:#fde68a;color:#92400e;cursor:pointer;" class="btn-small btn-primary">Available</span>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" style="opacity:0.7">
+        <div class="product-thumb" style="background:linear-gradient(135deg,#d1fae5,#ecfdf5)">📖</div>
+        <div class="product-body">
+          <div class="product-tag" style="background:#d1fae5;color:#065f46;">📖 Parenting Guide</div>
+          <div class="product-title">The Montessori Parent Handbook <span class="tag-new">Soon</span></div>
+          <div class="product-desc">A complete written guide to implementing Montessori principles at home — from birth to age 6. Currently in production.</div>
+          <div class="product-footer">
+            <div class="product-price" style="color:#9ca3af">Coming Soon</div>
+            <span class="btn-small" style="background:#f3f4f6;color:#9ca3af;cursor:default;">Notify me</span>
+          </div>
+        </div>
+      </div>
+      <div class="product-card" style="opacity:0.7">
+        <div class="product-thumb" style="background:linear-gradient(135deg,#ede9fe,#fce7f3)">🎧</div>
+        <div class="product-body">
+          <div class="product-tag" style="background:#ede9fe;color:#5b21b6;">🎧 Audiobook</div>
+          <div class="product-title">Play & Learn: The Audio Guide <span class="tag-new">Soon</span></div>
+          <div class="product-desc">The complete early intervention guide in audio format — perfect for busy parents on the go. Currently in production.</div>
+          <div class="product-footer">
+            <div class="product-price" style="color:#9ca3af">Coming Soon</div>
+            <span class="btn-small" style="background:#f3f4f6;color:#9ca3af;cursor:default;">Notify me</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-inner">
+    <div class="section-label" style="background:#fce7f3;color:#9d174d;">📝 Blog</div>
+    <h2 class="section-title">Insights for Curious Parents</h2>
+    <p class="section-sub">Real, practical knowledge on child development, Montessori, play therapy and raising confident, happy kids.</p>
+
+    <div class="blog-grid">
+
+      <div class="blog-card" onclick="openPost(0)">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">🌱</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat" style="background:#fde68a;color:#92400e;">Montessori</span>
+            <span class="blog-date">May 2026</span>
+          </div>
+          <div class="blog-title">What Does "Learning by Doing" Actually Mean for Your Child?</div>
+          <div class="blog-excerpt">Montessori's most powerful idea is also the simplest — children learn best through hands-on experience. Here's what that looks like at home.</div>
+          <a class="blog-read">Read more →</a>
+        </div>
+      </div>
+
+      <div class="blog-card" onclick="openPost(1)">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0)">🧸</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat" style="background:#d1fae5;color:#065f46;">Play Therapy</span>
+            <span class="blog-date">May 2026</span>
+          </div>
+          <div class="blog-title">5 Signs Your Child Might Benefit from Play Therapy</div>
+          <div class="blog-excerpt">Play therapy isn't just for children in crisis. Many everyday struggles — from school anxiety to sleep issues — can be gently supported through play.</div>
+          <a class="blog-read">Read more →</a>
+        </div>
+      </div>
+
+      <div class="blog-card" onclick="openPost(2)">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,#ede9fe,#c4b5fd)">🌈</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat" style="background:#ede9fe;color:#5b21b6;">Early Intervention</span>
+            <span class="blog-date">April 2026</span>
+          </div>
+          <div class="blog-title">Sensitive Periods: The Windows of Learning You Don't Want to Miss</div>
+          <div class="blog-excerpt">Every child goes through natural windows of heightened sensitivity to language, movement and social connection. Here's how to recognise and support them.</div>
+          <a class="blog-read">Read more →</a>
+        </div>
+      </div>
+
+      <div class="blog-card" onclick="openPost(3)">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8)">✏️</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat" style="background:#fce7f3;color:#9d174d;">Motor Skills</span>
+            <span class="blog-date">April 2026</span>
+          </div>
+          <div class="blog-title">Fine Motor Skills: Why Pencil Grip Starts Long Before Preschool</div>
+          <div class="blog-excerpt">The ability to hold a pencil confidently begins in the first months of life. Here's what parents can do to gently support fine motor development from the start.</div>
+          <a class="blog-read">Read more →</a>
+        </div>
+      </div>
+
+      <div class="blog-card" onclick="openPost(4)">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd)">👁️</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat" style="background:#e0f2fe;color:#0c4a6e;">Visual Development</span>
+            <span class="blog-date">March 2026</span>
+          </div>
+          <div class="blog-title">Visual Discrimination: The Hidden Skill Behind Reading Success</div>
+          <div class="blog-excerpt">Before a child can read, they need to see the difference between letters and shapes. This often-overlooked skill can be nurtured through simple everyday activities.</div>
+          <a class="blog-read">Read more →</a>
+        </div>
+      </div>
+
+      <div class="blog-card" onclick="openPost(5)">
+        <div class="blog-thumb" style="background:linear-gradient(135deg,#fef9c3,#fde68a)">🏃</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat" style="background:#fef3c7;color:#78350f;">Gross Motor</span>
+            <span class="blog-date">March 2026</span>
+          </div>
+          <div class="blog-title">Why Climbing, Running and Rolling Are as Important as ABCs</div>
+          <div class="blog-excerpt">Gross motor skills form the foundation for everything else — from sitting still in class to holding a pencil. Here's why movement is your child's first curriculum.</div>
+          <a class="blog-read">Read more →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-strip">
+      <div class="about-emoji">🌿</div>
+      <div class="about-text">
+        <div class="section-label" style="background:#ede9fe;color:#5b21b6;margin-bottom:12px">💛 About Ergo-Wispers</div>
+        <h2>We Believe Every Child Deserves to Be Understood</h2>
+        <p>Ergo-Wispers was born from a simple belief: that parents who understand child development can change their child's world. We translate complex therapeutic and educational research into beautiful, accessible videobooks and guides.</p>
+        <p>Our content is grounded in occupational therapy, Montessori principles, and play therapy — crafted for real parents with busy lives and big hearts.</p>
+        <div class="about-chips">
+          <span class="chip" style="background:#fde68a;color:#92400e;">🎓 Evidence-based</span>
+          <span class="chip" style="background:#d1fae5;color:#065f46;">🌍 Multilingual (coming)</span>
+          <span class="chip" style="background:#ede9fe;color:#5b21b6;">🎨 Beautifully designed</span>
+          <span class="chip" style="background:#fce7f3;color:#9d174d;">🧸 Parent-tested</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="newsletter">
+      <h3>🌟 Stay in the Loop</h3>
+      <p>New guides, blog posts and early-bird offers — delivered straight to your inbox. No spam, ever.</p>
+      <div class="nl-form">
+        <input class="nl-input" type="email" id="nlEmail" placeholder="your@email.com"/>
+        <button class="nl-btn" onclick="subscribeNL()">Subscribe ✨</button>
+      </div>
+      <div class="nl-success" id="nlSuccess">🎉 You're in! Welcome to the Ergo-Wispers family.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-box">
+      <div style="font-size:48px;margin-bottom:12px;animation:float 3s ease-in-out infinite">✉️</div>
+      <div class="section-label" style="background:#d1fae5;color:#065f46;margin-bottom:12px">📬 Get in Touch</div>
+      <h2 class="section-title" style="margin-bottom:12px">Questions? Collaborations? Just Say Hello!</h2>
+      <p>Whether you're a parent with a question, a therapist interested in collaborating, or a school looking for resources — we'd love to hear from you.</p>
+      <a href="mailto:babylandia14@yahoo.com" class="contact-email-link">
+        <span>📧</span> babylandia14@yahoo.com
+      </a>
+      <br/>
+      <p style="font-size:13px;color:var(--muted);margin-top:8px">We respond within 24 hours ☀️</p>
+      <div class="contact-socials">
+        <a href="#" class="social-btn" style="background:#fde68a;color:#92400e;">📘 Facebook</a>
+        <a href="https://www.instagram.com/edusteam_preschool/" class="social-btn" style="background:#fce7f3;color:#9d174d;" target="_blank">📸 Instagram</a>
+        <a href="#" class="social-btn" style="background:#e0f2fe;color:#0c4a6e;">🐦 Twitter / X</a>
+        <a href="https://youtu.be/-jdSBNPd5Ho?si=4X0hUzvkAKjn8Ztl" class="social-btn" style="background:#d1fae5;color:#065f46;" target="_blank">▶️ YouTube</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">🌱 Ergo·Wispers</div>
+    <div class="footer-tagline">Educational videobooks & guides — helping every child thrive through play.</div>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#categories">Shop</a>
+      <a href="#blog">Blog</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+    <div class="footer-copy">© 2026 Ergo-Wispers. All rights reserved. Made with 💛 for parents everywhere.</div>
+  </div>
+</footer>
+
+<!-- BLOG POST MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closePostOutside(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div id="modalMeta" style="display:flex;align-items:center;gap:8px;margin-bottom:10px"></div>
+      <button class="modal-close" onclick="closePost()">✕</button>
+      <div id="modalTitle" style="font-family:'Lora',serif;font-size:22px;font-weight:600;line-height:1.3;padding-right:40px"></div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+// Mobile menu
+function toggleMenu(){
+  const m = document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+}
+
+// Active nav on scroll
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if(window.scrollY >= s.offsetTop - 80) current = s.id; });
+  navLinks.forEach(a => { a.classList.remove('active'); if(a.getAttribute('href') === '#'+current) a.classList.add('active'); });
+});
+
+// Newsletter
+function subscribeNL(){
+  const v = document.getElementById('nlEmail').value;
+  if(!v || !v.includes('@')){ alert('Please enter a valid email!'); return; }
+  document.querySelector('.nl-form').style.display='none';
+  document.getElementById('nlSuccess').style.display='block';
+}
+
+// Blog posts data
+const posts = [
+  {
+    cat:'Montessori', catColor:'#fde68a', catText:'#92400e', date:'May 2026', emoji:'🌱',
+    title:'What Does "Learning by Doing" Actually Mean for Your Child?',
+    body:`<p>Maria Montessori's most quoted phrase — "I just gave children the opportunity to learn" — sounds simple. But in practice, it represents one of the most radical shifts in how we think about education.</p>
+    <h3>The Science Behind It</h3>
+    <p>When children use their hands and bodies to explore, their brains form stronger, more lasting connections than when they passively receive information. This is backed by decades of neuroscience research on embodied cognition.</p>
+    <div class="highlight">"Play is the work of childhood." — Jean Piaget</div>
+    <h3>What This Looks Like at Home</h3>
+    <ul><li>Let your child pour their own water, even if it spills</li><li>Give them real tools — small scissors, real kitchen utensils</li><li>Allow unstructured outdoor time with mud, sand and water</li><li>Resist the urge to fix things for them immediately</li></ul>
+    <h3>The Role of Mistakes</h3>
+    <p>Montessori believed that mistakes are not failures — they are the feedback loop that drives learning. When a child drops blocks and rebuilds, they are developing problem-solving, persistence and spatial awareness simultaneously.</p>
+    <p>The goal is not a tidy outcome. The goal is a child who trusts their own ability to figure things out.</p>`
+  },
+  {
+    cat:'Play Therapy', catColor:'#d1fae5', catText:'#065f46', date:'May 2026', emoji:'🧸',
+    title:'5 Signs Your Child Might Benefit from Play Therapy',
+    body:`<p>Play therapy is often misunderstood as something only for children with serious trauma. In reality, it's a gentle, effective tool for a wide range of everyday challenges that many children face.</p>
+    <h3>1. Sudden Changes in Behaviour</h3>
+    <p>If your child has become unusually aggressive, withdrawn or clingy after a life change — a new sibling, moving house, starting school — play therapy can help them process those emotions safely.</p>
+    <h3>2. Sleep Difficulties</h3>
+    <p>Nightmares, resistance to bedtime or frequent waking can all signal unprocessed anxiety. A play therapist can help a child express what they struggle to put into words.</p>
+    <h3>3. School Avoidance</h3>
+    <p>Repeated stomachaches on school mornings, crying at drop-off, or declining academic performance can be signs that something emotional is getting in the way of learning.</p>
+    <div class="highlight">Play therapy works for ages 3–12, and can be done individually, in groups, or with parents present.</div>
+    <h3>4. Difficulty Making Friends</h3>
+    <p>Social skills don't always come naturally, and that's okay. Play therapy provides a safe space to practice interaction, sharing and emotional regulation.</p>
+    <h3>5. Repetitive or Rigid Play</h3>
+    <p>If your child insists on playing the same game in exactly the same way, or becomes very distressed when routines change, a therapist can explore whether this signals anxiety or sensory sensitivity.</p>`
+  },
+  {
+    cat:'Early Intervention', catColor:'#ede9fe', catText:'#5b21b6', date:'April 2026', emoji:'🌈',
+    title:'Sensitive Periods: The Windows of Learning You Don\'t Want to Miss',
+    body:`<p>One of Montessori's most profound observations was that children go through specific developmental windows — periods of intense sensitivity to certain types of learning. During these windows, children absorb information almost effortlessly.</p>
+    <h3>What Are Sensitive Periods?</h3>
+    <p>A sensitive period is a span of time when a child's brain is especially receptive to a particular kind of experience. Once the window passes, learning that skill becomes harder — not impossible, but it requires much more effort.</p>
+    <h3>The Key Sensitive Periods</h3>
+    <ul>
+      <li><strong>Language (0–6 years):</strong> Children absorb the sounds, rhythms and grammar of language with extraordinary ease</li>
+      <li><strong>Movement (1–4 years):</strong> Gross and fine motor coordination develop rapidly through physical exploration</li>
+      <li><strong>Order (1–3 years):</strong> Children crave predictable routines and environments — this is not stubbornness, it's development</li>
+      <li><strong>Social skills (2–6 years):</strong> Children become acutely interested in others and the social rules of their world</li>
+    </ul>
+    <div class="highlight">Early intervention works so well precisely because it targets these sensitive periods — supporting development when the brain is most ready to receive it.</div>
+    <h3>How to Support Sensitive Periods</h3>
+    <p>You don't need a Montessori school to honour sensitive periods. Simply observe your child, follow their lead, and create an environment that offers rich opportunities in the area they seem most drawn to.</p>`
+  },
+  {
+    cat:'Motor Skills', catColor:'#fce7f3', catText:'#9d174d', date:'April 2026', emoji:'✏️',
+    title:'Fine Motor Skills: Why Pencil Grip Starts Long Before Preschool',
+    body:`<p>Many parents are surprised to learn that a child's ability to grip a pencil comfortably in preschool is shaped by experiences that begin in the first weeks of life.</p>
+    <h3>The Grasping Reflex</h3>
+    <p>From birth, babies have an involuntary grasping reflex — they close their fingers tightly around any object placed in their palm. This is the very first stage of fine motor development. By month 5, voluntary palmar grasping begins. By the end of the first year, children show pincer grip — picking up small objects between finger and thumb.</p>
+    <h3>Why This Matters for Writing</h3>
+    <p>Good pencil grip requires strength in the small muscles of the hand, coordination between eyes and fingers, and postural stability in the shoulders and wrists. All of this builds gradually from infancy.</p>
+    <div class="highlight">A child who struggles with pencil grip often isn't being lazy — they may simply need more sensory and motor input at earlier stages.</div>
+    <h3>Activities That Build Fine Motor Skills</h3>
+    <ul>
+      <li>Tearing paper, squeezing playdough, using tongs and tweezers</li>
+      <li>Threading beads, doing up buttons, using small pegs</li>
+      <li>Finger painting, drawing in sand or shaving foam</li>
+      <li>Pouring water, transferring objects with spoons</li>
+    </ul>
+    <p>These are not just games — they are building the neural pathways that will later support writing, drawing, and countless daily living skills.</p>`
+  },
+  {
+    cat:'Visual Development', catColor:'#e0f2fe', catText:'#0c4a6e', date:'March 2026', emoji:'👁️',
+    title:'Visual Discrimination: The Hidden Skill Behind Reading Success',
+    body:`<p>When we think about preparing children to read, we think about phonics and letter recognition. But there's a crucial visual skill that often goes unmentioned: visual discrimination — the ability to notice differences between similar shapes and symbols.</p>
+    <h3>What Is Visual Discrimination?</h3>
+    <p>Visual discrimination allows a child to see that 'b' and 'd' are different letters, that 'cat' and 'car' are different words, and that the number 6 is not the same as the number 9. Without strong visual discrimination, early reading and writing become genuinely difficult — not because the child isn't bright, but because their visual system needs more support.</p>
+    <h3>Signs of Difficulty</h3>
+    <ul>
+      <li>Reversing letters or numbers beyond age 7</li>
+      <li>Difficulty recognising their own name in print</li>
+      <li>Losing their place when reading</li>
+      <li>Struggles with copying from a board</li>
+    </ul>
+    <div class="highlight">Visual discrimination is not the same as eyesight. A child can have perfect 20/20 vision and still struggle with visual processing.</div>
+    <h3>How to Strengthen It</h3>
+    <p>Sorting games, spot-the-difference puzzles, matching activities, and jigsaw puzzles all build this skill naturally. The Montessori sensorial materials — like the Pink Tower and Broad Stair — were specifically designed to develop visual discrimination through hands-on play.</p>`
+  },
+  {
+    cat:'Gross Motor', catColor:'#fef3c7', catText:'#78350f', date:'March 2026', emoji:'🏃',
+    title:'Why Climbing, Running and Rolling Are as Important as ABCs',
+    body:`<p>In a culture that prizes early academic achievement, gross motor play is often seen as fun but non-essential. The science tells a very different story.</p>
+    <h3>Gross Motor Skills Are the Foundation</h3>
+    <p>Before a child can sit still at a desk, they need core strength. Before they can hold a pencil, they need shoulder stability. Before they can track a line of text, they need a stable posture. All of this comes from gross motor development — the kind built through running, climbing, jumping, and rolling.</p>
+    <h3>The Body-Brain Connection</h3>
+    <p>Physical movement stimulates the vestibular system — the part of the brain that processes balance, spatial orientation, and body awareness. A well-developed vestibular system supports attention, impulse control, and even reading fluency.</p>
+    <div class="highlight">Research shows that children who have more unstructured outdoor play time show better concentration, emotional regulation and social skills in school.</div>
+    <h3>What To Do</h3>
+    <ul>
+      <li>Prioritise outdoor play daily — even 20 minutes makes a measurable difference</li>
+      <li>Let children take physical risks: climbing trees, jumping from heights, rolling down hills</li>
+      <li>Reduce screen time during early childhood — passive screen use doesn't develop the vestibular system</li>
+      <li>Try swimming, gymnastics or dance — activities that develop full-body coordination</li>
+    </ul>
+    <p>The child who spends their afternoon climbing a tree is doing exactly what their brain needs. Movement is not a break from learning — it IS the learning.</p>`
+  }
+];
+
+function openPost(idx) {
+  const p = posts[idx];
+  document.getElementById('modalMeta').innerHTML =
+    '<span style="padding:3px 10px;border-radius:12px;font-size:11px;font-weight:800;text-transform:uppercase;background:'+p.catColor+';color:'+p.catText+'">'+p.cat+'</span>' +
+    '<span style="font-size:12px;color:#9ca3af;font-weight:600">'+p.date+'</span>';
+  document.getElementById('modalTitle').textContent = p.title;
+  document.getElementById('modalBody').innerHTML = p.body;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePost() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closePostOutside(e) {
+  if (e.target === document.getElementById('modalOverlay')) closePost();
+}
+
+document.addEventListener('keydown', e => { if(e.key==='Escape') closePost(); });
+</script>
+</body>
+</html>
